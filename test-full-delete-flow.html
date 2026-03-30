@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Delete Flow</title>
+</head>
+<body>
+    <h1>Test Delete Opportunity</h1>
+    <button onclick="testDelete()">Test Delete</button>
+    <pre id="output"></pre>
+
+    <script>
+        async function testDelete() {
+            const output = document.getElementById('output');
+            output.textContent = 'Testing...\n';
+
+            try {
+                // First login
+                output.textContent += 'Step 1: Logging in...\n';
+                const loginResponse = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: 'scout@example.com',
+                        password: 'password123'
+                    })
+                });
+
+                if (!loginResponse.ok) {
+                    output.textContent += 'Login failed: ' + loginResponse.status + '\n';
+                    return;
+                }
+
+                const loginData = await loginResponse.json();
+                const token = loginData.token;
+                output.textContent += 'Login successful! Token: ' + token.substring(0, 20) + '...\n';
+
+                // Get opportunities
+                output.textContent += '\nStep 2: Getting opportunities...\n';
+                const oppsResponse = await fetch('http://localhost:5000/api/opportunities/scout/my-opportunities', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                const opportunities = await oppsResponse.json();
+                output.textContent += `Found ${opportunities.length} opportunities\n`;
+
+                if (opportunities.length === 0) {
+                    output.textContent += 'No opportunities to delete\n';
+                    return;
+                }
+
+                const oppId = opportunities[0].id;
+                output.textContent += `\nStep 3: Deleting opportunity ${oppId}...\n`;
+
+                // Delete opportunity
+                const deleteResponse = await fetch(`http://localhost:5000/api/opportunities/${oppId}`, {
+                    method: 'DELETE',
+                    headers: { 
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                output.textContent += `Delete response status: ${deleteResponse.status}\n`;
+                
+                const deleteData = await deleteResponse.json();
+                output.textContent += `Delete response: ${JSON.stringify(deleteData, null, 2)}\n`;
+
+                if (deleteResponse.ok) {
+                    output.textContent += '\n✅ DELETE SUCCESSFUL!\n';
+                } else {
+                    output.textContent += '\n❌ DELETE FAILED!\n';
+                }
+
+            } catch (error) {
+                output.textContent += '\n❌ Error: ' + error.message + '\n';
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+</html>

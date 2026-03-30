@@ -1,0 +1,147 @@
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f5f7fa;
+    padding: 20px;
+  }
+  
+  .login-card {
+    background: #fff;
+    padding: 36px 32px;
+    width: 420px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  
+  .login-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .login-card h2 {
+    margin-bottom: 8px;
+    font-size: 1.8rem;
+  }
+  
+  .muted {
+    color: #6b7280;
+    margin-bottom: 24px;
+  }
+  
+  .login-form label {
+    display: block;
+    text-align: left;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  
+  .login-form input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    margin-top: 6px;
+    font-size: 1rem;
+    transition: border 0.2s ease;
+  }
+  
+  .login-form input:focus {
+    border-color: #10b981;
+    outline: none;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+  }
+  
+  .create-account {
+    margin-top: 24px;
+  }
+  
+  .create-account p {
+    margin-bottom: 8px;
+    color: #6b7280;
+  }
+  
+  .btn {
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .btn.primary {
+    background-color: #10b981;
+    color: white;
+  }
+  
+  .btn.primary:hover {
+    background-color: #059669;
+  }
+  
+  .btn.ghost {
+    background-color: transparent;
+    color: #10b981;
+    border: 2px solid #10b981;
+  }
+  
+  .btn.ghost:hover {
+    background-color: #10b981;
+    color: white;
+  }
+  
+  .btn.secondary {
+    background-color: #3b82f6;
+    color: white;
+  }
+  
+  .btn.secondary:hover {
+    background-color: #2563eb;
+  }
+  
+  .error {
+    background: #fee2e2;
+    color: #b91c1c;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  /* Responsive */
+  @media (max-width: 480px) {
+    .login-card {
+      width: 100%;
+      padding: 24px;
+    }
+  
+    .form-actions {
+      flex-direction: column;
+    }
+  }
+  
+  .forgot-password-link {
+    text-align: center;
+    margin-top: 12px;
+  }
+  
+  .link-button {
+    background: none;
+    border: none;
+    color: #10b981;
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    padding: 0;
+  }
+  
+  .link-button:hover {
+    color: #059669;
+  }

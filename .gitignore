@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+server/node_modules/
+
+# Environment variables - NEVER COMMIT THESE
+.env
+server/.env
+*.env
+.env.*
+
+# Build outputs
+build/
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Database
+*.db
+*.sqlite
+
+# Temporary files
+*.tmp
+*.temp
+
+# Sensitive documentation with real credentials
+GOOGLE_LOGIN_INSTRUCTIONS.md
+GOOGLE_OAUTH_SETUP.md
+GOOGLE_PASSWORD_FEATURE.md
+GMAIL_SETUP_QUICK.md
+EMAIL_SETUP_GUIDE.md
+ENABLE_EMAIL_NOW.md
+
+# Exclude all markdown and batch files except README
+*.md
+!README.md
+*.bat
+*.sh
